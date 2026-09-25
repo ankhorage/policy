@@ -1,5 +1,11 @@
 # @ankhorage/policy
 
+## 0.2.0
+
+### Minor Changes
+
+- 83d977b: Make README usage and configuration documentation surfaces opt-in while preserving strict canonical rules once those surfaces are present.
+
 ## 0.1.0
 
 ### Minor Changes
