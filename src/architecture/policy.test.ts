@@ -76,7 +76,14 @@ test('publishes unique architecture/profile rule ids with error severity', () =>
   const ids = values.map((entry) => entry.id);
 
   expect(new Set(ids).size).toBe(ids.length);
-  expect(values.every((entry) => entry.severity === 'error')).toBe(true);
+  expect(ARCHITECTURE_POLICY.rules.catchAllDirectory).toMatchObject({
+    id: 'package.architecture.catch-all-directory.disallowed',
+    severity: 'error',
+  });
+  expect(ARCHITECTURE_POLICY.rules.scriptBuild).toMatchObject({
+    id: 'package.scripts.build.required',
+    severity: 'error',
+  });
 });
 
 test('architecture policy is serializable pure data', () => {
