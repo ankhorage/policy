@@ -1,5 +1,12 @@
 # @ankhorage/policy
 
+## 0.3.0
+
+### Minor Changes
+
+- a9b7228: Publish the canonical repository runtime and tooling policy for Bun, Node, Changesets, PKGViz audit
+  configuration, and Doctor runtime rule metadata.
+
 ## 0.2.1
 
 ### Patch Changes

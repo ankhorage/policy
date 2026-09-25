@@ -1,6 +1,6 @@
 {
   "name": "@ankhorage/policy",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Canonical policy definitions for Ankhorage repositories and packages.",
   "license": "MIT",
   "type": "module",
