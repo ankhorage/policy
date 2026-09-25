@@ -1,5 +1,11 @@
 # @ankhorage/policy
 
+## 0.3.1
+
+### Patch Changes
+
+- 45e8bfa: Derive the public Bun package-manager and types policy from single private Renovate-owned version literals.
+
 ## 0.3.0
 
 ### Minor Changes
