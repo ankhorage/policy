@@ -148,11 +148,22 @@ export const DOCUMENTATION_POLICY: DocumentationPolicy = {
   tags,
   readmeUsage: {
     required: false,
+    activation: 'usage-tag',
     root: 'examples',
     requiredTags: ['usage', 'readme', 'title'],
     requireDescription: true,
     exactCount: 1,
     cliReadmeCombinationAllowed: false,
+    chapterCount: 1,
+    sectionOrder: ['cli', 'programmatic'],
+    sourceCode: {
+      extraction: 'annotated-declaration',
+      includeDocumentationComment: false,
+      includeSourcePath: false,
+    },
+    fullDocumentation: {
+      includeAllUsageEntries: true,
+    },
   },
   config: {
     required: false,
