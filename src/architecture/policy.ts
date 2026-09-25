@@ -1,0 +1,146 @@
+import { ARCHITECTURE_RULES as rules } from './rules.js';
+
+/***
+ * Canonical source architecture and generic public-package profile policy.
+ */
+export const ARCHITECTURE_POLICY = {
+  source: {
+    catchAllDirectories: ['common', 'helpers', 'shared'],
+    inwardFeatureRoles: ['application', 'contracts', 'domain', 'planning', 'ports'],
+    roles: {
+      domain: {
+        segments: ['domain', 'core'],
+        forbiddenOutwardSegments: [
+          'adapters',
+          'app',
+          'application',
+          'cli',
+          'composition',
+          'host',
+          'infrastructure',
+          'platform',
+        ],
+        ruleId: rules.domainOutwardImport.id,
+        label: 'Domain/core policy',
+      },
+      application: {
+        segments: ['application'],
+        forbiddenOutwardSegments: [
+          'adapters',
+          'app',
+          'cli',
+          'composition',
+          'host',
+          'infrastructure',
+          'platform',
+        ],
+        ruleId: rules.applicationOutwardImport.id,
+        label: 'Application/use-case code',
+      },
+      ports: {
+        segments: ['ports'],
+        forbiddenOutwardSegments: [
+          'adapters',
+          'app',
+          'cli',
+          'composition',
+          'host',
+          'infrastructure',
+          'platform',
+        ],
+        ruleId: rules.portOutwardImport.id,
+        label: 'Port contracts',
+      },
+    },
+    featureCombinations: {
+      adapters: {
+        requiresAnyOf: ['application', 'contracts', 'domain', 'planning', 'ports'],
+        ruleId: rules.roleCombination.id,
+      },
+      composition: {
+        requiresAnyOf: ['adapters', 'application', 'planning', 'ports'],
+        ruleId: rules.roleCombination.id,
+      },
+    },
+    thinDeliveryAdapter: {
+      pathSegments: ['cli', 'commands'],
+      concreteAdapterSegment: 'adapters',
+      ruleId: rules.deliveryConcreteAdapterImport.id,
+    },
+    repositoryBoundaryRuleId: rules.importOutsideRoot.id,
+  },
+  cli: {
+    sourceRoot: 'src/cli',
+    commandsRoot: 'src/cli/commands',
+    legacyRootFile: 'src/cli.ts',
+    packageExport: './cli',
+    legacyRootRuleId: rules.cliRootFile.id,
+    exportRuleId: rules.cliExport.id,
+  },
+  dependencies: {
+    compatibilityPackagePrefix: '@ankh/',
+    legacySourceMarker: 'ankhorage4',
+    localProtocolPrefixes: ['file:', 'link:', 'workspace:', 'github:', 'git:', 'git+'],
+    rules: {
+      compatibilityDependency: rules.compatibilityDependency.id,
+      compatibilityImport: rules.compatibilityImport.id,
+      legacySourceDependency: rules.legacySourceDependency.id,
+      legacySourceImport: rules.legacySourceImport.id,
+      localProtocolDependency: rules.localProtocolDependency.id,
+    },
+  },
+  publicPackage: {
+    requiredRepoPaths: [
+      { path: 'README.md', kind: 'file', ruleId: rules.repoReadme.id },
+      { path: 'CHANGELOG.md', kind: 'file', ruleId: rules.repoChangelog.id },
+      { path: 'LICENSE', kind: 'file', ruleId: rules.repoLicense.id },
+      { path: '.changeset', kind: 'directory', ruleId: rules.repoChangeset.id },
+      { path: '.github/workflows', kind: 'directory', ruleId: rules.repoWorkflows.id },
+    ],
+    requiredScripts: [
+      { name: 'build', ruleId: rules.scriptBuild.id },
+      { name: 'typecheck', ruleId: rules.scriptTypecheck.id },
+      { name: 'lint', ruleId: rules.scriptLint.id },
+      { name: 'lint:fix', ruleId: rules.scriptLintFix.id },
+      { name: 'format', ruleId: rules.scriptFormat.id },
+      { name: 'format:check', ruleId: rules.scriptFormatCheck.id },
+      { name: 'test', ruleId: rules.scriptTest.id },
+      { name: 'test:standalone', ruleId: rules.scriptStandalone.id },
+      { name: 'knip:check', ruleId: rules.scriptKnip.id },
+      { name: 'docs', ruleId: rules.scriptDocs.id },
+      { name: 'changeset', ruleId: rules.scriptChangeset.id },
+      { name: 'changeset:status', ruleId: rules.scriptChangesetStatus.id },
+      { name: 'version-packages', ruleId: rules.scriptVersionPackages.id },
+    ],
+    requiredFields: [
+      { name: 'name', kind: 'non-empty-string', ruleId: rules.packageName.id },
+      { name: 'version', kind: 'non-empty-string', ruleId: rules.packageVersion.id },
+      { name: 'type', kind: 'non-empty-string', ruleId: rules.packageType.id },
+      { name: 'description', kind: 'non-empty-string', ruleId: rules.packageDescription.id },
+      { name: 'repository', kind: 'record', ruleId: rules.packageRepository.id },
+      { name: 'homepage', kind: 'non-empty-string', ruleId: rules.packageHomepage.id },
+      { name: 'bugs', kind: 'record', ruleId: rules.packageBugs.id },
+      { name: 'license', kind: 'non-empty-string', ruleId: rules.packageLicense.id },
+      { name: 'keywords', kind: 'string-array', ruleId: rules.packageKeywords.id },
+      { name: 'files', kind: 'string-array', ruleId: rules.packageFiles.id },
+      { name: 'exports', kind: 'record', ruleId: rules.packageExports.id },
+      { name: 'publishConfig', kind: 'record', ruleId: rules.packagePublishConfig.id },
+    ],
+    packageType: { value: 'module', ruleId: rules.packageTypeModule.id },
+    publishAccess: { value: 'public', ruleId: rules.packagePublishPublic.id },
+    privateDisallowedRuleId: rules.packagePrivate.id,
+    packageManager: {
+      requiredRuleId: rules.packageManagerRequired.id,
+      bunRuleId: rules.packageManagerBun.id,
+    },
+    dependencyRules: {
+      typescript: rules.dependencyTypescript.id,
+      bunTypes: rules.dependencyBunTypes.id,
+      nodeTypes: rules.dependencyNodeTypes.id,
+      devtools: rules.dependencyDevtools.id,
+      paradox: rules.dependencyParadox.id,
+      changesets: rules.dependencyChangesets.id,
+    },
+  },
+  rules,
+} as const;
