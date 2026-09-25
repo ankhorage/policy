@@ -27,6 +27,13 @@ test('repository policy publishes the canonical Bun and Node runtime baseline', 
   });
 });
 
+test('repository policy derives Bun package metadata from the canonical runtime literal', () => {
+  expect(REPOSITORY_POLICY.runtime.bun.packageManager).toBe(
+    `bun@${REPOSITORY_POLICY.runtime.bun.version}`,
+  );
+  expect(REPOSITORY_POLICY.runtime.bun.typesRange).toMatch(/^\^\d+\.\d+\.\d+$/u);
+});
+
 test('repository policy publishes Changesets and PKGViz tooling policy', () => {
   expect(REPOSITORY_POLICY.changesets.packageScripts).toEqual({
     changeset: 'ankhorage-changeset',
