@@ -30,17 +30,9 @@ describe('documentation policy', () => {
 
   test('requires exactly one README usage example and configuration root', () => {
     expect(DOCUMENTATION_POLICY.readmeUsage.exactCount).toBe(1);
-    expect(DOCUMENTATION_POLICY.readmeUsage.requiredTags).toEqual([
-      'usage',
-      'readme',
-      'title',
-    ]);
+    expect(DOCUMENTATION_POLICY.readmeUsage.requiredTags).toEqual(['usage', 'readme', 'title']);
     expect(DOCUMENTATION_POLICY.config.exactCount).toBe(1);
-    expect(DOCUMENTATION_POLICY.config.requiredTags).toEqual([
-      'config',
-      'readme',
-      'title',
-    ]);
+    expect(DOCUMENTATION_POLICY.config.requiredTags).toEqual(['config', 'readme', 'title']);
   });
 
   test('requires colocated exact security test references', () => {
