@@ -30,8 +30,19 @@ describe('documentation policy', () => {
 
   test('keeps usage and config surfaces optional but canonical once present', () => {
     expect(DOCUMENTATION_POLICY.readmeUsage.required).toBe(false);
+    expect(DOCUMENTATION_POLICY.readmeUsage.activation).toBe('usage-tag');
     expect(DOCUMENTATION_POLICY.readmeUsage.exactCount).toBe(1);
     expect(DOCUMENTATION_POLICY.readmeUsage.requiredTags).toEqual(['usage', 'readme', 'title']);
+    expect(DOCUMENTATION_POLICY.readmeUsage.chapterCount).toBe(1);
+    expect(DOCUMENTATION_POLICY.readmeUsage.sectionOrder).toEqual(['cli', 'programmatic']);
+    expect(DOCUMENTATION_POLICY.readmeUsage.sourceCode).toEqual({
+      extraction: 'annotated-declaration',
+      includeDocumentationComment: false,
+      includeSourcePath: false,
+    });
+    expect(DOCUMENTATION_POLICY.readmeUsage.fullDocumentation).toEqual({
+      includeAllUsageEntries: true,
+    });
     expect(DOCUMENTATION_POLICY.config.required).toBe(false);
     expect(DOCUMENTATION_POLICY.config.exactCount).toBe(1);
     expect(DOCUMENTATION_POLICY.config.requiredTags).toEqual(['config', 'readme', 'title']);
