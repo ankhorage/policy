@@ -39,6 +39,10 @@
     "./repository": {
       "types": "./dist/repository/index.d.ts",
       "import": "./dist/repository/index.js"
+    },
+    "./architecture": {
+      "types": "./dist/architecture/index.d.ts",
+      "import": "./dist/architecture/index.js"
     }
   },
   "scripts": {
