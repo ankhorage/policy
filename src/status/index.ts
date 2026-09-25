@@ -1,4 +1,3 @@
-export { resolvePolicyStatus } from './resolvePolicyStatus.js';
 export type {
   PolicyFinding,
   PolicyRule,
@@ -7,3 +6,4 @@ export type {
   PolicyStatusColor,
   PolicyStatusDescriptor,
 } from '../types/policy.js';
+export { resolvePolicyStatus } from './resolvePolicyStatus.js';
