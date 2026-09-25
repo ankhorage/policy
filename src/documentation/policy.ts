@@ -23,7 +23,8 @@ const rules = [
     id: 'documentation.usage.readme.unique',
     domain: 'documentation',
     severity: 'error',
-    description: 'Exactly one example below examples/** must combine @usage and @readme.',
+    description:
+      'When programmatic usage documentation is present, exactly one example below examples/** must combine @usage and @readme.',
   },
   {
     id: 'documentation.usage.readme.cli',
@@ -41,7 +42,8 @@ const rules = [
     id: 'documentation.config.file',
     domain: 'documentation',
     severity: 'error',
-    description: 'The canonical configuration schema must exist at src/types/config.ts.',
+    description:
+      'When configuration documentation is present, its canonical schema must exist at src/types/config.ts.',
   },
   {
     id: 'documentation.config.location',
@@ -145,6 +147,7 @@ export const DOCUMENTATION_POLICY: DocumentationPolicy = {
   },
   tags,
   readmeUsage: {
+    required: false,
     root: 'examples',
     requiredTags: ['usage', 'readme', 'title'],
     requireDescription: true,
@@ -152,6 +155,7 @@ export const DOCUMENTATION_POLICY: DocumentationPolicy = {
     cliReadmeCombinationAllowed: false,
   },
   config: {
+    required: false,
     path: 'src/types/config.ts',
     declarationKinds: ['interface', 'type'],
     requiredTags: ['config', 'readme', 'title'],

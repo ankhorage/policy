@@ -28,6 +28,7 @@ export interface DocumentationPolicy {
   };
   readonly tags: readonly DocumentationTagPolicy[];
   readonly readmeUsage: {
+    readonly required: false;
     readonly root: 'examples';
     readonly requiredTags: readonly ['usage', 'readme', 'title'];
     readonly requireDescription: true;
@@ -35,6 +36,7 @@ export interface DocumentationPolicy {
     readonly cliReadmeCombinationAllowed: false;
   };
   readonly config: {
+    readonly required: false;
     readonly path: 'src/types/config.ts';
     readonly declarationKinds: readonly ['interface', 'type'];
     readonly requiredTags: readonly ['config', 'readme', 'title'];
