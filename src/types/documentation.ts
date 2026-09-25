@@ -1,18 +1,9 @@
 import type { PolicyRule } from './policy.js';
 
-export type DocumentationTagName =
-  | 'readme'
-  | 'usage'
-  | 'config'
-  | 'title'
-  | 'see'
-  | 'security';
+export type DocumentationTagName = 'readme' | 'usage' | 'config' | 'title' | 'see' | 'security';
 
 export type DocumentationTagValueKind =
-  | 'none'
-  | 'non-empty-text'
-  | 'public-https-url'
-  | 'colocated-test-reference';
+  'none' | 'non-empty-text' | 'public-https-url' | 'colocated-test-reference';
 
 export type DocumentationTagTarget = 'block' | 'symbol' | 'interface' | 'type';
 
