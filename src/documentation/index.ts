@@ -1,4 +1,3 @@
-export { DOCUMENTATION_POLICY } from './policy.js';
 export type {
   DocumentationPolicy,
   DocumentationTagName,
@@ -6,3 +5,4 @@ export type {
   DocumentationTagTarget,
   DocumentationTagValueKind,
 } from '../types/documentation.js';
+export { DOCUMENTATION_POLICY } from './policy.js';
