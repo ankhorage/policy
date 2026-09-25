@@ -28,9 +28,11 @@ describe('documentation policy', () => {
     expect(new Set(ids).size).toBe(ids.length);
   });
 
-  test('requires exactly one README usage example and configuration root', () => {
+  test('keeps usage and config surfaces optional but canonical once present', () => {
+    expect(DOCUMENTATION_POLICY.readmeUsage.required).toBe(false);
     expect(DOCUMENTATION_POLICY.readmeUsage.exactCount).toBe(1);
     expect(DOCUMENTATION_POLICY.readmeUsage.requiredTags).toEqual(['usage', 'readme', 'title']);
+    expect(DOCUMENTATION_POLICY.config.required).toBe(false);
     expect(DOCUMENTATION_POLICY.config.exactCount).toBe(1);
     expect(DOCUMENTATION_POLICY.config.requiredTags).toEqual(['config', 'readme', 'title']);
   });
