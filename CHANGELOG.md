@@ -1,5 +1,12 @@
 # @ankhorage/policy
 
+## 0.4.0
+
+### Minor Changes
+
+- 150c82c: Publish canonical source architecture, dependency-boundary, CLI-layout, and generic public-package
+  profile policy for shared Doctor enforcement and Devtools guidance.
+
 ## 0.3.1
 
 ### Patch Changes
