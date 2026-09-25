@@ -1,0 +1,61 @@
+{
+  "name": "@ankhorage/policy",
+  "version": "0.0.0",
+  "description": "Canonical policy definitions for Ankhorage repositories and packages.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ankhorage/policy.git"
+  },
+  "homepage": "https://github.com/ankhorage/policy#readme",
+  "bugs": {
+    "url": "https://github.com/ankhorage/policy/issues"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "rm -rf dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.build.json",
+    "check-types": "bun x tsc --noEmit -p tsconfig.json",
+    "typecheck": "bun run check-types",
+    "test": "bun test",
+    "lint": "ankhorage-eslint . --max-warnings=0",
+    "lint:fix": "ankhorage-eslint . --fix --max-warnings=0",
+    "format": "ankhorage-prettier --write .",
+    "format:check": "ankhorage-prettier --check .",
+    "knip:check": "ankhorage-knip",
+    "changeset": "ankhorage-changeset",
+    "changeset:status": "ankhorage-changeset status --since=origin/main",
+    "version-packages": "ankhorage-changeset version",
+    "prepack": "bun run build"
+  },
+  "devDependencies": {
+    "@ankhorage/devtools": "^1.21.1",
+    "@types/bun": "^1.4.1",
+    "@types/node": "^26.6.2",
+    "typescript": "~6.0.3"
+  },
+  "packageManager": "bun@1.4.2",
+  "keywords": [
+    "ankhorage",
+    "policy",
+    "compliance",
+    "repository",
+    "documentation"
+  ]
+}
