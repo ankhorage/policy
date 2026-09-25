@@ -1,0 +1,44 @@
+/***
+ * Repository dependency-update configuration.
+ *
+ * Runtime policy literals are updated here because @ankhorage/policy is their canonical owner.
+ */
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: ['github>ankhorage/renovate'],
+  customManagers: [
+    {
+      customType: 'regex',
+      managerFilePatterns: ['/^src\\/repository\\/policy\\.ts$/'],
+      matchStrings: ["const BUN_VERSION = '(?<currentValue>[^']+)';"],
+      depNameTemplate: 'bun',
+      datasourceTemplate: 'npm',
+    },
+    {
+      customType: 'regex',
+      managerFilePatterns: ['/^src\\/repository\\/policy\\.ts$/'],
+      matchStrings: ["const BUN_TYPES_VERSION = '(?<currentValue>[^']+)';"],
+      depNameTemplate: '@types/bun',
+      datasourceTemplate: 'npm',
+    },
+  ],
+  packageRules: [
+    {
+      description: 'Review canonical repository runtime policy updates',
+      matchManagers: ['custom.regex'],
+      matchDepNames: ['bun', '@types/bun'],
+      matchFileNames: ['src/repository/policy.ts'],
+      rangeStrategy: 'replace',
+      automerge: false,
+      platformAutomerge: false,
+    },
+    {
+      description: 'Require review for major repository runtime policy updates',
+      matchManagers: ['custom.regex'],
+      matchDepNames: ['bun', '@types/bun'],
+      matchUpdateTypes: ['major'],
+      automerge: false,
+      platformAutomerge: false,
+    },
+  ],
+}
