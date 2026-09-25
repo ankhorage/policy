@@ -225,11 +225,15 @@ export const ARCHITECTURE_RULES = {
 } as const satisfies Readonly<Record<string, PolicyRule>>;
 
 /*** Creates one error-level rule descriptor. */
-function rule(id: string, domain: string, description: string): PolicyRule {
-  return { id, domain, severity: 'error', description };
+function rule<const Id extends string, const Domain extends string>(
+  id: Id,
+  domain: Domain,
+  description: string,
+) {
+  return { id, domain, severity: 'error' as const, description } satisfies PolicyRule;
 }
 
 /*** Creates one required package-script rule descriptor. */
-function scriptRule(name: string, id: string): PolicyRule {
+function scriptRule<const Id extends string>(name: string, id: Id) {
   return rule(id, 'public-package', `Public packages require the ${name} script.`);
 }
