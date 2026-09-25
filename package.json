@@ -27,7 +27,15 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./documentation": {
+      "types": "./dist/documentation/index.d.ts",
+      "import": "./dist/documentation/index.js"
+    },
+    "./status": {
+      "types": "./dist/status/index.d.ts",
+      "import": "./dist/status/index.js"
+    }
   },
   "scripts": {
     "build": "rm -rf dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.build.json",
