@@ -3,11 +3,7 @@ import { expect, test } from 'bun:test';
 import { ARCHITECTURE_POLICY } from './policy.js';
 
 test('publishes canonical source architecture vocabulary', () => {
-  expect(ARCHITECTURE_POLICY.source.catchAllDirectories).toEqual([
-    'common',
-    'helpers',
-    'shared',
-  ]);
+  expect(ARCHITECTURE_POLICY.source.catchAllDirectories).toEqual(['common', 'helpers', 'shared']);
   expect(ARCHITECTURE_POLICY.source.inwardFeatureRoles).toEqual([
     'application',
     'contracts',
@@ -16,10 +12,7 @@ test('publishes canonical source architecture vocabulary', () => {
     'ports',
   ]);
   expect(ARCHITECTURE_POLICY.source.roles.domain.segments).toEqual(['domain', 'core']);
-  expect(ARCHITECTURE_POLICY.source.thinDeliveryAdapter.pathSegments).toEqual([
-    'cli',
-    'commands',
-  ]);
+  expect(ARCHITECTURE_POLICY.source.thinDeliveryAdapter.pathSegments).toEqual(['cli', 'commands']);
 });
 
 test('publishes canonical feature role combinations', () => {
