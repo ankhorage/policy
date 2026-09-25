@@ -35,6 +35,10 @@
     "./status": {
       "types": "./dist/status/index.d.ts",
       "import": "./dist/status/index.js"
+    },
+    "./repository": {
+      "types": "./dist/repository/index.d.ts",
+      "import": "./dist/repository/index.js"
     }
   },
   "scripts": {
