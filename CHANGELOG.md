@@ -1,5 +1,11 @@
 # @ankhorage/policy
 
+## 0.5.0
+
+### Minor Changes
+
+- 87f146c: Expose the complete canonical README usage contract for capability-aware CLI and programmatic documentation rendering.
+
 ## 0.4.0
 
 ### Minor Changes
