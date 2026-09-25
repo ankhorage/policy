@@ -29,11 +29,22 @@ export interface DocumentationPolicy {
   readonly tags: readonly DocumentationTagPolicy[];
   readonly readmeUsage: {
     readonly required: boolean;
+    readonly activation: 'usage-tag';
     readonly root: 'examples';
     readonly requiredTags: readonly ['usage', 'readme', 'title'];
     readonly requireDescription: true;
     readonly exactCount: 1;
     readonly cliReadmeCombinationAllowed: false;
+    readonly chapterCount: 1;
+    readonly sectionOrder: readonly ['cli', 'programmatic'];
+    readonly sourceCode: {
+      readonly extraction: 'annotated-declaration';
+      readonly includeDocumentationComment: false;
+      readonly includeSourcePath: false;
+    };
+    readonly fullDocumentation: {
+      readonly includeAllUsageEntries: true;
+    };
   };
   readonly config: {
     readonly required: boolean;
