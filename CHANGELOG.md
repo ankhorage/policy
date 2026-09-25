@@ -1,5 +1,11 @@
 # @ankhorage/policy
 
+## 0.2.1
+
+### Patch Changes
+
+- ad2006d: Expose optional documentation-surface requirement flags as booleans so consumers can branch on policy without hard-coding current values.
+
 ## 0.2.0
 
 ### Minor Changes
