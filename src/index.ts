@@ -1,4 +1,5 @@
 export { DOCUMENTATION_POLICY } from './documentation/policy.js';
+export { REPOSITORY_POLICY } from './repository/policy.js';
 export { resolvePolicyStatus } from './status/resolvePolicyStatus.js';
 export type {
   DocumentationPolicy,
