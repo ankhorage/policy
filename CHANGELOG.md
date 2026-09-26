@@ -1,5 +1,11 @@
 # @ankhorage/policy
 
+## 0.5.1
+
+### Patch Changes
+
+- ab35598: Preserve literal architecture rule ids and domains in the public Policy type surface so consumers such as Doctor can use stable rule metadata without casts.
+
 ## 0.5.0
 
 ### Minor Changes
